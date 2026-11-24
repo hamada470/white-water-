@@ -293,8 +293,39 @@
       "description": "توصيل وايت مياه صالحة للشرب سعة 6 طن بالرياض سرعة في التوصيل لجميع الأحياء"
     }
     </script>
+
+    <!-- كود تتبع الإحالات الناجحة (Google Tag Manager & DataLayer) -->
+    <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-PMLF86LL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        // دالة تتبع النقرات على أزرار الاتصال وضمان تسجيل الإحالة قبل فتح الهاتف
+        function trackCallConversion(url, buttonLocation) {
+            window.dataLayer.push({
+                'event': 'call_button_click',
+                'button_location': buttonLocation,
+                'phone_number': '0560206487'
+            });
+            gtag('event', 'conversion', {
+                'event_category': 'Call',
+                'event_label': buttonLocation
+            });
+
+            if (typeof(url) !== 'undefined') {
+                setTimeout(function() {
+                    window.location = url;
+                }, 300);
+            }
+            return false;
+        }
+    </script>
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PMLF86LL"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- الهيدر مع الشعار وزر الاتصال -->
     <header>
@@ -307,7 +338,7 @@
                 <span>الرياض - مياه صالحة للشرب</span>
             </div>
         </a>
-        <a href="tel:0560206487" class="header-btn">
+        <a href="tel:0560206487" onclick="return trackCallConversion('tel:0560206487', 'header_call_btn');" class="header-btn">
             <i class="fa-solid fa-phone"></i> اتصل الآن
         </a>
     </header>
@@ -316,7 +347,7 @@
     <section class="hero">
         <h1>أسرع وايت مياه 6 طن بالرياض</h1>
         <p>مياه عذبة ونقية صالحة للشرب والاستخدام المنزلي - نصلك فوراً بشمال وشرق وجنوب الرياض</p>
-        <a href="tel:0560206487" class="cta-btn">
+        <a href="tel:0560206487" onclick="return trackCallConversion('tel:0560206487', 'hero_call_btn');" class="cta-btn">
             <i class="fa-solid fa-phone-volume"></i> اطلب الآن: 0560206487
         </a>
     </section>
@@ -384,7 +415,7 @@
     </footer>
 
     <!-- زر الاتصال العائم (يمين) -->
-    <a href="tel:0560206487" class="floating-btn float-call" title="اتصل بنا">
+    <a href="tel:0560206487" onclick="return trackCallConversion('tel:0560206487', 'floating_call_btn');" class="floating-btn float-call" title="اتصل بنا">
         <i class="fa-solid fa-phone"></i>
     </a>
 
